@@ -47,10 +47,11 @@ public class manyQueue {
 		double time = 0;
 		double tLimit = 100;
 		// double tPump = 0;
-		double[] tPump = new double[2];
+		double[] tPump = new double[1];
 		double tStep = 1.0;
 
 		// 큐에 대한 변수
+		double ave = 0;
 		int queue = 0;
 		double aveQue = 0;
 		int arrive = 0;
@@ -64,7 +65,7 @@ public class manyQueue {
 		 * double mean = 8.0; 
 		 * double mean = 10.0;
 		 */
-		double mean = 4.0;
+		double mean = 20;
 
 		/*
 		 * 균등분포에 대한 변수 double prArr = 0.17; // 1시간 10명 
@@ -73,6 +74,10 @@ public class manyQueue {
 		 * double prArr = 0.67; // 1시간 40명 
 		 * double prArr = 0.83; // 1시간 50명 
 		 * double prArr = 1; // 1시간 60명
+		 * 1.17 // 1시간 70명
+		 * 1.33 // 1시간 80명
+		 * 1.5 // 1시간 90
+		 * 1.67 // 1시간 100
 		 */
 		double prArr = 0.33;
 
@@ -81,7 +86,7 @@ public class manyQueue {
 		System.out.println("고객이 1분내 도착할 확률 : " + prArr);
 		System.out.println("포아송분포 기댓값 : " + mean);
 		// System.out.println("TIME ARRIVAL QUEUE TPUMP1");
-		System.out.println("TIME		ARRIVAL		QUEUE		TPUMP1		TPUMP2");
+		// System.out.println("TIME		ARRIVAL		QUEUE		TPUMP1		TPUMP2");
 		// System.out.println("TIME		ARRIVAL		QUEUE		TPUMP1		TPUMP2		TPUMP3");
 		// System.out.println("TIME		ARRIVAL		QUEUE		TPUMP1		TPUMP2		TPUMP3		TPUMP4");
 
@@ -136,12 +141,15 @@ public class manyQueue {
 					// 고객의 평균 대기 시간
 					aveQue = totQue / (tLimit / tStep);
 				}
+				
 				//System.out.println(time + "\t\t" + arrive + "\t\t" + queue + "\t\t" + tPump[0]	+"\t\t"	+ tPump[1]+ "\t\t" + tPump[2] + "\t\t" + tPump[3]);
-				System.out.println(time + "\t\t" + arrive + "\t\t" + queue + "\t\t" + tPump[0]	+"\t\t"	+ tPump[1]);
+				//System.out.println(time + "\t\t" + arrive + "\t\t" + queue + "\t\t" + tPump[0]	+"\t\t"	+ tPump[1] + "\t\t" + tPump[2]);
 			}
-			System.out.println("고객의 평균 대기시간 : " + aveQue + "분");
-			System.out.println("전체 대기인원수 : " + totQue + "명");
-			System.out.println();
+			ave = ave + aveQue;
+			//System.out.println("고객의 평균 대기시간 : " + aveQue + "분");
+			//System.out.println("전체 대기인원수 : " + totQue + "명");
+			
 		}
+		System.out.println("평균 대기 시간 : " + ave/5);
 	}
 }
